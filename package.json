@@ -78,7 +78,8 @@
       "<rootDir>/libs/"
     ],
     "moduleNameMapper": {
-      "^@app/configs(|/.*)$": "<rootDir>/libs/configs/src/$1"
+      "^@app/configs(|/.*)$": "<rootDir>/libs/configs/src/$1",
+      "^@app/exceptions(|/.*)$": "<rootDir>/libs/exceptions/src/$1"
     }
   }
 }

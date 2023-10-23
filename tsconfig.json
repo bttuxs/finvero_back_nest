@@ -23,6 +23,12 @@
       ],
       "@app/configs/*": [
         "libs/configs/src/*"
+      ],
+      "@app/exceptions": [
+        "libs/exceptions/src"
+      ],
+      "@app/exceptions/*": [
+        "libs/exceptions/src/*"
       ]
     }
   }
