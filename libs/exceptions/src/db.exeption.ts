@@ -7,7 +7,7 @@ export function DbException(Err: any, nameEntity: string) {
       message = 'Sql Key Duplicada en ' + nameEntity;
       break;
     default:
-      message = 'Not found';
+      message = 'Error en DDBB ' + nameEntity;
       break;
   }
 
