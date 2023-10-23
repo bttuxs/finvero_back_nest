@@ -27,6 +27,15 @@
       "compilerOptions": {
         "tsConfigPath": "apps/app-orden/tsconfig.app.json"
       }
+    },
+    "app-producto": {
+      "type": "application",
+      "root": "apps/app-producto",
+      "entryFile": "main",
+      "sourceRoot": "apps/app-producto/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/app-producto/tsconfig.app.json"
+      }
     }
   }
 }
