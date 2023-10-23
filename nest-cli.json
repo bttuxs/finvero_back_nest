@@ -18,6 +18,15 @@
       "compilerOptions": {
         "tsConfigPath": "apps/app-usuario/tsconfig.app.json"
       }
+    },
+    "app-orden": {
+      "type": "application",
+      "root": "apps/app-orden",
+      "entryFile": "main",
+      "sourceRoot": "apps/app-orden/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/app-orden/tsconfig.app.json"
+      }
     }
   }
 }
