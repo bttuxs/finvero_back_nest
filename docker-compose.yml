@@ -8,5 +8,37 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
       MYSQL_DATABASE: ${MYSQL_DDBB}
+    networks:
+      - app-network
     ports:
       - "${MYSQL_PORT}:3306"
+    healthcheck:
+      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+
+  app_ws_user:
+    container_name: node_ws_user    
+    build: 
+      dockerfile: docker/app-user/Dockerfile
+      context: .
+    environment:
+      MYSQL_HOST: app_db
+      MYSQL_DDBB: ${MYSQL_DDBB}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASS: ${MYSQL_PASS}
+      MYSQL_PORT: 3306
+    ports:
+      - '3000:3000'
+    networks:
+      - app-network
+    depends_on:
+      app_db:
+        condition: service_healthy
+    restart: on-failure
+
+networks:
+  app-network:
+    driver: bridge
