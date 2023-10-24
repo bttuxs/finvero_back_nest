@@ -22,6 +22,7 @@ export class OrdenService {
     try {
       return await this.ordenRepository.find({
         where: { ...orden },
+        relations: { items: true },
       });
     } catch (e) {
       DbException(e, ordenEntity.toString());

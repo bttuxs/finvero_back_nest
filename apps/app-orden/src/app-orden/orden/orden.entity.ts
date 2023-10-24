@@ -1,4 +1,12 @@
-import { Entity, Column, PrimaryGeneratedColumn, Generated } from 'typeorm';
+import {
+  Entity,
+  Column,
+  PrimaryGeneratedColumn,
+  Generated,
+  OneToMany,
+  JoinColumn,
+} from 'typeorm';
+import { ordenDetalleEntity } from '../orden-detalle/orden-detalle.entity';
 
 @Entity({ name: 'orden' })
 export class ordenEntity {
@@ -15,4 +23,7 @@ export class ordenEntity {
     default: () => 'CURRENT_TIMESTAMP',
   })
   createdAt: Date;
+  @OneToMany(() => ordenDetalleEntity, (ordenDetalle) => ordenDetalle.orden)
+  @JoinColumn({ name: 'orden', referencedColumnName: 'orden_id' })
+  items: ordenDetalleEntity[];
 }
