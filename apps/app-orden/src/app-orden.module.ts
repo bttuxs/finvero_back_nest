@@ -2,6 +2,7 @@ import { Module } from '@nestjs/common';
 import { OrdenModule } from './app-orden/orden/orden.module';
 import { ConfigModule } from '@nestjs/config';
 import { configMysql } from '@app/configs';
+import { OrdenDetalleModule } from './app-orden/orden-detalle/orden-detalle.module';
 
 @Module({
   imports: [
@@ -12,6 +13,7 @@ import { configMysql } from '@app/configs';
     }),
     configMysql,
     OrdenModule,
+    OrdenDetalleModule,
   ],
   controllers: [],
   providers: [],
