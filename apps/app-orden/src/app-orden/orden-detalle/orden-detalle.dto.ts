@@ -34,6 +34,18 @@ export class ordenDetalleAddDTO {
   precio: number;
 }
 
+export class ordenDetalleAddItemsDTO {
+  @IsNotEmpty()
+  @IsString()
+  producto: string;
+  @IsNumber()
+  @IsNotEmpty()
+  cantidad: number;
+  @IsNumber()
+  @IsNotEmpty()
+  precio: number;
+}
+
 export class ordenDetalleDelDTO {
   @IsNotEmpty()
   @IsString()

@@ -2,7 +2,11 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { productoEntity } from './producto.entity';
-import { productoCreateDTO, productoUserDTO } from './producto.dto';
+import {
+  productoCreateDTO,
+  productoUserDTO,
+  productoValidDTO,
+} from './producto.dto';
 import { DbException } from '@app/exceptions';
 
 @Injectable()
@@ -28,6 +32,15 @@ export class ProductoService {
   async createProducto(producto: productoCreateDTO): Promise<productoEntity> {
     try {
       return await this.productoRepository.save(producto);
+    } catch (e) {
+      DbException(e, productoEntity.toString());
+    }
+  }
+  async getProductosUserByname(
+    producto: productoValidDTO,
+  ): Promise<productoEntity> {
+    try {
+      return await this.productoRepository.findOne({ where: { ...producto } });
     } catch (e) {
       DbException(e, productoEntity.toString());
     }
