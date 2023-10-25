@@ -8,6 +8,13 @@ async function bootstrap() {
     logger: new LoggerService(),
   });
   app.useGlobalPipes(new ValidationPipe());
-  await app.listen(3002);
+  app.enableCors({
+    allowedHeaders: '*',
+    origin: '*',
+    credentials: true,
+  });
+  const port = process.env.PORT_APP_WS_ORDEN || '3002';
+  console.log('****---PORT: ' + port);
+  await app.listen(port);
 }
 bootstrap();
