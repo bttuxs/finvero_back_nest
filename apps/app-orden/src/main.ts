@@ -9,8 +9,8 @@ async function bootstrap() {
   });
   app.useGlobalPipes(new ValidationPipe());
   app.enableCors({
-    allowedHeaders: '*',
-    origin: '*',
+    origin: true,
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
     credentials: true,
   });
   const port = process.env.PORT_APP_WS_ORDEN || '3002';
