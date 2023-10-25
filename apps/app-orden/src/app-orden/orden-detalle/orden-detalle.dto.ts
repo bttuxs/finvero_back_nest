@@ -1,4 +1,5 @@
-import { IsDateString, IsNotEmpty, IsNumber, IsString } from 'class-validator';
+import { Transform } from 'class-transformer';
+import { IsDate, IsDateString, IsNotEmpty, IsNumber, IsString } from 'class-validator';
 
 export class ordenDetalleDTO {
   @IsNumber()
@@ -59,4 +60,17 @@ export class ordenDetalleIdDTO {
   @IsNotEmpty()
   @IsString()
   orden_id: string;
+}
+export class ordenFechasDTO {
+  @IsNotEmpty()
+  @IsString()
+  id_usuario: number;
+
+  @IsNotEmpty()
+  @IsDateString()
+  fecha_inicio: Date;
+
+  @IsDateString()
+  @IsNotEmpty()
+  fecha_termino: Date;
 }

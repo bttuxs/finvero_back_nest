@@ -1,10 +1,19 @@
-import { Body, Controller, Delete, Get, Param, Post } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Param,
+  Post,
+  Query,
+} from '@nestjs/common';
 import { OrdenDetalleService } from './orden-detalle.service';
 import {
   ordenDetalleAddDTO,
   ordenDetalleAddItemsDTO,
   ordenDetalleDelDTO,
   ordenDetalleIdDTO,
+  ordenFechasDTO,
 } from './orden-detalle.dto';
 import { DbException } from '@app/exceptions';
 import { ordenDetalleEntity } from './orden-detalle.entity';
@@ -86,7 +95,6 @@ export class OrdenDetalleController {
           };
           const result = await this.ordenDetalleService.addDetalleOrden(item);
           response.push(result);
-
         } catch (e) {
           DbException(e, ordenDetalleEntity.toString());
         }
@@ -104,6 +112,16 @@ export class OrdenDetalleController {
   ): Promise<DeleteResult> {
     try {
       return await this.ordenDetalleService.delDetalleOrden(item);
+    } catch (e) {
+      DbException(e, ordenDetalleEntity.toString());
+    }
+  }
+
+  @Get('ventas/user')
+  async getVentas(@Query() fechas: ordenFechasDTO) {
+    console.log(fechas.fecha_inicio);
+    try {
+      return await this.ordenDetalleService.getVentas(fechas);
     } catch (e) {
       DbException(e, ordenDetalleEntity.toString());
     }
