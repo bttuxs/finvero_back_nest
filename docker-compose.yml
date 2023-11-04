@@ -18,6 +18,11 @@ services:
       timeout: 10s
       retries: 3
       start_period: 10s
+    deploy:
+      resources:
+        limits:
+          cpus: '1.0'
+          memory: 1024M
 
   app_ws_user:
     container_name: node_ws_user    
@@ -38,6 +43,11 @@ services:
       app_db:
         condition: service_healthy
     restart: on-failure
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 500M
 
   app_ws_producto:
     container_name: node_ws_producto
@@ -58,6 +68,11 @@ services:
       app_db:
         condition: service_healthy
     restart: on-failure
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 500M
 
   app_ws_orden:
     container_name: node_ws_orden
@@ -78,6 +93,11 @@ services:
       app_db:
         condition: service_healthy
     restart: on-failure
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 500M
 
 networks:
   app-network:
